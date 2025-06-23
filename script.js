@@ -70,3 +70,10 @@ const quiz = [
     answer4: { text: "show()", correct: false }
   }
 ];
+
+
+const question = document.getElementById('currentquestion')
+const answer = document.getElementById('answer-buttons')
+
+const firstQuestion = quiz.question[0]
+question.innerText = firstQuestion

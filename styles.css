@@ -1,0 +1,16 @@
+body{
+    text-align: center;
+    color: blue;
+    background-color: rgb(255, 255, 255);
+}
+
+.Quiz {
+    background-color: blueviolet;
+}
+
+#answer-buttons{
+    flex-direction: column;
+    gap: 50px;
+    display: flex;
+    margin-bottom: 5px;
+}
