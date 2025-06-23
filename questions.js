@@ -1,4 +1,4 @@
-const quiz ={
+export const quiz ={
   questions: [
   {
     text: "Quel type de données retourne typeof \"Bonjour\" ?",
