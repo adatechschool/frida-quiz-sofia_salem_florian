@@ -6,25 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <script defer src="game.js"></script>
 </head>
 
 <body>
-    <div class="app">
-        <h1>Quiz Game</h1>
-        <div class="Quiz">
-            <h2 id="currentquestion">question</h2>
-            <div id="answer-buttons">
-                <button class="btn">answer1</button>
-                <button class="btn">answer2</button>
-                <button class="btn">answer3</button>
-                <button class="btn">answer4</button>
-                
-            </div>
-            <button class="btn">next</button>
+    <div id="quiz-container">
+
+        <div class="question" id="question-text">
+            <!-- La question sera injectée ici par JavaScript -->
+        </div>
+
+
+        <div class="options" id="options-container">
+            <!-- Les options seront injectées ici par JavaScript -->
+        </div>
+
+
+        <div class="button-container">
+            <button id="next-button">Suivant</button>
         </div>
     </div>
 
+    <!-- Importe ici ton fichier JavaScript -->
+    <script type="module" src="game.js"></script>
 </body>
 
 </html>
