@@ -27,6 +27,7 @@ let currentQuestionIndex = 0; // Commence à la première question
 const question = document.getElementById("question-text");
 const optionsAnswers = document.getElementById("options-container");
 const nextButton = document.getElementById('next-button');
+const replayButton = document.getElementById('replay-button')
 
 // Fonction pour afficher une question basée sur l'index actuel
 function loadQuestion() {
@@ -64,8 +65,21 @@ nextButton.addEventListener('click', () => {
     question.innerText = 'fin du quiz'
     optionsAnswers.innerHTML = ''
     nextButton.style.display = 'none'
+    replayButton.style.display='block'
   }
 
 })
 
+
+
+
+replayButton.addEventListener('click', () => {
+  currentQuestionIndex = 0
+  replayButton.style.display = 'none'
+  nextButton.style.display = 'block'
+  loadQuestion()
+
+})
+
 loadQuestion()
+
