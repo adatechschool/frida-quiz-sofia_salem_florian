@@ -66,7 +66,6 @@ const replayButton = document.getElementById('replay-button')
 // Fonction pour afficher une question basée sur l'index actuel
 function loadQuestion() {
 
-
   // Vider le conteneur des options
   optionsAnswers.innerHTML = '';
 
@@ -82,7 +81,24 @@ function loadQuestion() {
   answer_btn.innerText = choice;
   answer_btn.classList.add("options");
   optionsAnswers.appendChild(answer_btn);
+
+  const correctAnswer1 = quiz.questions[currentQuestionIndex].correctAnswer
   
+
+  answer_btn.addEventListener('click', (event) => {
+    const allButtons = document.querySelectorAll('.options')
+    let result = event.target.innerText
+    // console.log(result)
+  if (result === correctAnswer1) {
+    // console.log(answer_btn)
+    answer_btn.style.border = "solid green"
+  } else {
+    answer_btn.style.border = "solid red"
+  }
+  allButtons.forEach(button => {
+    button.disabled = true
+  })
+})
 })}
 
 // Ajouter un écouteur d'événements pour le bouton "Suivant"
@@ -104,9 +120,6 @@ nextButton.addEventListener('click', () => {
 
 })
 
-
-
-
 replayButton.addEventListener('click', () => {
   currentQuestionIndex = 0
   replayButton.style.display = 'none'
@@ -117,3 +130,19 @@ replayButton.addEventListener('click', () => {
 
 loadQuestion()
 
+
+// let userHasClicked = false
+
+// do {
+//   userHasClicked = false
+//   }
+// while (nextButton.style.display = "none")
+
+
+
+
+// function checkAnswer () {
+//   if (choice === correctAnswer) {
+//     answer_btn.strokeStyle = 
+//   }
+// }
