@@ -26,4 +26,11 @@ Jeudi 26 juin
 
 > désactive les autres boutons quand clic sur un bouton (terminé)
 > ajout suivi de score
-> 
+> timer (en cours)
+
+
+Vendredi 27 juin
+
+>
+>
+>
