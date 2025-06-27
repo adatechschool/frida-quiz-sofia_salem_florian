@@ -30,6 +30,7 @@ const nextButton = document.getElementById('next-button');//*le bouton suivant
 const replayButton = document.getElementById('replay-button')//*le bouton rejouer (qui est caché voir html)
 const affichageScore = document.getElementById('affiche-score')//* le score
 const affichageTimer = document.getElementById('affiche-timer')//* le timer
+const progress = document.getElementById("progress")// barre de progression
 
 
 
@@ -41,7 +42,16 @@ function loadQuestion() {
 	affichageScore.innerText = `Score ${score}/${quiz.questions.length}`
 	// *On récupère la question actuelle à partir de l'index
 	const currentQuestion = quiz.questions[currentQuestionIndex];
-
+	// on affiche la barre de progression des questions
+		progress.innerText = "";
+		quiz.questions.forEach(question => {
+			progress.innerHTML += "<span></span>"
+		})
+	
+		let spans = document.querySelectorAll('span');
+	
+		for (let i = 0; i <= currentQuestionIndex; i++)
+			spans[i].style.backgroundColor = "yellow"
 	// *On affiche le texte de la question dans le HTML
 	question.innerText = currentQuestion.text;
 
