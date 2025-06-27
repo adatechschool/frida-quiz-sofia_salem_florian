@@ -1,6 +1,9 @@
 Ce projet sera un quiz par rapport aux notions de code.
 
 
+SEMAINE 01
+
+
 Lundi 23 juin
 
 > création squelette HTML
@@ -30,6 +33,18 @@ Jeudi 26 juin
 
 
 Vendredi 27 juin
+
+> barre de progression
+> timer opérationnel et qui se bloque à 0
+> affichage des explications
+> problème timer aléatoire lors de la sélection
+> ajuster timer sélection réponse (en cours)
+
+
+SEMAINE 02
+
+
+Lundi 30 juin
 
 >
 >
