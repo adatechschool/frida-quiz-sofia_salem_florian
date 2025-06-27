@@ -23,33 +23,37 @@ let currentQuestionIndex = 0; //On commence à 0 (la première question)
 let score = 0;
 let compteur = 10
 
-// &tous les éléments HTML
+// &Tous les éléments HTML
 const question = document.getElementById("question-text");//*question
 const optionsAnswers = document.getElementById("options-container");//*les boutons de réponse
 const nextButton = document.getElementById('next-button');//*le bouton suivant
 const replayButton = document.getElementById('replay-button')//*le bouton rejouer (qui est caché voir html)
 const affichageScore = document.getElementById('affiche-score')//* le score
 const affichageTimer = document.getElementById('affiche-timer')//* le timer
-
-
+const explanationText = document.getElementById('explanation')//* les explications
 
 // &Fonction qui affiche une question 
 function loadQuestion() {
 
-	// *On vide les anciennes réponses (si on est à la 2e ou 3e question par exemple)
+	//* On vide les anciennes réponses (si on est à la 2e ou 3e question par exemple)
 	optionsAnswers.innerHTML = '';
+	
+	explanationText.innerText = '';
+
 	affichageScore.innerText = `Score ${score}/${quiz.questions.length}`
-	// *On récupère la question actuelle à partir de l'index
+
+	//* On récupère la question actuelle à partir de l'index
 	const currentQuestion = quiz.questions[currentQuestionIndex];
 
-	// *On affiche le texte de la question dans le HTML
+	//* On affiche le texte de la question dans le HTML
 	question.innerText = currentQuestion.text;
 
-	// On désactive le bouton "Suivant" tant qu'aucune réponse n’est cliquée
+	//* On désactive le bouton "Suivant" tant qu'aucune réponse n’est cliquée
 	nextButton.disabled = true;
 
-	//On crée un bouton pour chaque réponse possible 
+	//* On crée un bouton pour chaque réponse possible 
 	checkTime()
+	
 	currentQuestion.choices.forEach(choice => {
 
 		const answer_btn = document.createElement('button');// On crée un nouveau bouton pour chaque réponse
@@ -66,6 +70,8 @@ function loadQuestion() {
 
 
 			console.log(result)
+			
+			explanationText.innerText = currentQuestion.explanation
 
 			// On désactive tous les boutons de réponse pour empêcher de cliquer plusieurs fois
 			const allButtons = optionsAnswers.querySelectorAll('.options');
@@ -77,7 +83,6 @@ function loadQuestion() {
 				score++
 				console.log(score)
 				affichageScore.innerText = `Score ${score}/${quiz.questions.length}`
-
 			} else {
 				event.target.style.border = 'solid red'; // Sinon, on met le bouton cliqué en rouge
 				console.log(score)
