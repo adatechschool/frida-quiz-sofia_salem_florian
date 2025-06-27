@@ -1,24 +1,6 @@
 // On importe les questions depuis un autre fichier (questions2.js) pour pouvoir les utiliser ici
 import { quiz } from './questions.js'
 
-
-/*
-const firstQuestion = quiz.questions[0];
-
-question.innerText = firstQuestion.text
-
-firstQuestion.choices.forEach(choice => {
-  const answer_btn = document.createElement('button');
-  answer_btn.innerText = choice;
-  answer_btn.classList.add("options");
-  options.appendChild(answer_btn);
-});
-
-*/
-
-//Etape 5
-
-// &Variable  
 let currentQuestionIndex = 0; //On commence à 0 (la première question)
 let score = 0;
 let compteur = 10
@@ -43,15 +25,15 @@ function loadQuestion() {
 	// *On récupère la question actuelle à partir de l'index
 	const currentQuestion = quiz.questions[currentQuestionIndex];
 	// on affiche la barre de progression des questions
-		progress.innerText = "";
-		quiz.questions.forEach(question => {
-			progress.innerHTML += "<span></span>"
+	progress.innerText = "";
+	quiz.questions.forEach(question => {
+		progress.innerHTML += "<span></span>"
 		})
 	
-		let spans = document.querySelectorAll('span');
+	let spans = document.querySelectorAll('span');
 	
-		for (let i = 0; i <= currentQuestionIndex; i++)
-			spans[i].style.backgroundColor = "yellow"
+	for (let i = 0; i <= currentQuestionIndex; i++)
+		spans[i].style.backgroundColor = "yellow"
 	// *On affiche le texte de la question dans le HTML
 	question.innerText = currentQuestion.text;
 
@@ -159,8 +141,6 @@ function checkTime() {
 				// if check answer btn.innerText => 
 				if(checkAnswer(btn.innerText)===true){
 					btn.style.border = 'solid green';
-				}else{
-					btn.style.border = 'solid red'	
 				}
 			});
 			
