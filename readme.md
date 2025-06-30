@@ -46,6 +46,15 @@ SEMAINE 02
 
 Lundi 30 juin
 
+> Timer opérationnel
+> Effacer "countdown" au début du compte à rebours
+> Après le timer ou en sélectionnant une réponse, affiche la réponse sélectionnée et la bonne réponse (si mauvaise sélectionnée)
+> Mise à jour de la structure du code pour plus de visibilité (en cours)
+> Feature suivant auto (à régler)
+
+
+Mardi 01 juillet
+
 >
 >
 >
