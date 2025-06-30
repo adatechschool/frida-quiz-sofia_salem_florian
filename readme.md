@@ -55,6 +55,25 @@ Lundi 30 juin
 
 Mardi 01 juillet
 
+Objectifs :
+> terminer clean code
+> tester le quiz
+> débuter le css
+
+Tâches :
+>
+>
+>
+
+
+Mercredi 02 juillet
+
+Objectifs :
+> avoir terminé le css
+> faire des sessions de présentation (se répartir les features à présenter)
+> 
+
+Tâches :
 >
 >
 >
