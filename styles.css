@@ -1,0 +1,137 @@
+/* Centrage global de la page */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212;
+  font-family: Arial, sans-serif;
+  color: white;
+
+  /* Cacher le curseur par défaut */
+  cursor: none;
+  position: relative;
+}
+
+/* Conteneur du quiz */
+#quiz-container {
+  text-align: center;
+  border: 1px solid #00ffff;
+  box-shadow: 0 0 8px #00ffff44;
+  padding: 30px 40px;
+  border-radius: 12px;
+  background-color: #1e1e1e;
+  width: 400px;
+}
+
+/* Zone de la question */
+#question-text {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  padding: 15px;
+  border: 1px solid #00ffff;
+  box-shadow: 0 0 8px #00ffff44;
+  border-radius: 10px;
+  background-color: #222;
+}
+
+/* Conteneur des options */
+#options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Boutons de réponse avec effet néon statique */
+.options {
+  padding: 12px 20px;
+  border: 1px solid #00ffff;
+  box-shadow: 0 0 4px #00ffff44;
+  border-radius: 8px;
+  background-color: #222;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+/* Hover sur boutons de réponse */
+.options:hover {
+  background-color: #222;
+  color: #00ffff;
+  border-color: #00ffff;
+  box-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+}
+
+/*.options:disabled {
+  border-color: red;
+}*/
+
+.options:hover:disabled {
+  box-shadow: none;
+}
+
+/* Conteneur des boutons Suivant / Rejouer */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Style boutons Suivant et Rejouer */
+#next-button, #replay-button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #00ffff;
+  box-shadow: 0 0 4px #00ffff44;
+  background-color: #222;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+/* Hover effet néon statique sur boutons Suivant / Rejouer */
+#next-button:hover, #replay-button:hover {
+  background-color: #222;
+  color: #00ffff;
+  border-color: #00ffff;
+  box-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+}
+
+#progress {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+#progress span {
+  width:50px;
+  height: 14px;
+  border-radius: 10%;
+  background: #e2e8f0; /* gris clair */
+  transition: background 0.3s ease;
+}
+
+#progressScore {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: aqua;
+}
+
+#progressScore span.score-unit {
+  color: tomato;
+  width:50px;
+  height: 14px;
+  border-radius: 10%;
+  background: blue; /* gris clair */
+  transition: background 0.3s ease;
+}
+
