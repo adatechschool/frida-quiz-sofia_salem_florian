@@ -66,9 +66,9 @@ body {
   box-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
 }
 
-.options:disabled {
+/*.options:disabled {
   border-color: red;
-}
+}*/
 
 .options:hover:disabled {
   box-shadow: none;

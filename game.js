@@ -4,6 +4,7 @@ import { quiz } from './questions.js'
 let currentQuestionIndex = 0; //On commence à 0 (la première question)
 let score = 0;
 let compteur = 10
+let id
 // let explanationAdd = 0
 
 // &Tous les éléments HTML
@@ -22,11 +23,28 @@ const explanationText = document.getElementById('explanation')//* les explicatio
 
 //& Fonctions
 	//& Fonction qui affiche une question
+	function suivantButton(){
+	
+		currentQuestionIndex++;
+		affichageTimer.innerText = compteur
+		clearInterval(id);
+		// S’il reste des questions, on les affiche
+		if (currentQuestionIndex < quiz.questions.length) {
+			loadQuestion();
+		} else { // Sinon, on affiche un message de fin de quiz
+			question.innerText = 'fin du quiz';
+			optionsAnswers.innerHTML = '';// on vide les réponses
+			nextButton.style.display = 'none';// on cache le bouton "suivant"
+			replayButton.style.display = 'block';// on montre le bouton "rejouer"
+			explanationText.innerText = ''
+			affichageTimer.innerText=''
+		}
+}
 	function loadQuestion() {
 
 		//* On vide les anciennes réponses (si on est à la 2e ou 3e question par exemple)
 		optionsAnswers.innerHTML = '';
-		
+		affichageTimer.innerText= compteur;
 		explanationText.innerText = '';
 
 		affichageScore.innerText = `Score ${score}/${quiz.questions.length}`
@@ -50,31 +68,11 @@ const explanationText = document.getElementById('explanation')//* les explicatio
 		//* On affiche le texte de la question dans le HTML
 		question.innerText = currentQuestion.text;
 
-<<<<<<< HEAD
-	// *On vide les anciennes réponses (si on est à la 2e ou 3e question par exemple)
-	optionsAnswers.innerHTML = '';
-	affichageScore.innerText = `Score ${score}/${quiz.questions.length}`
-	// *On récupère la question actuelle à partir de l'index
-	const currentQuestion = quiz.questions[currentQuestionIndex];
-	// on affiche la barre de progression des questions
-	progress.innerText = "";
-	quiz.questions.forEach(question => {
-		progress.innerHTML += "<span></span>"
-		})
-	
-	let spans = document.querySelectorAll('span');
-	
-	for (let i = 0; i <= currentQuestionIndex; i++)
-		spans[i].style.backgroundColor = "yellow"
-	// *On affiche le texte de la question dans le HTML
-	question.innerText = currentQuestion.text;
-=======
 		//* On désactive le bouton "Suivant" tant qu'aucune réponse n’est cliquée
 		nextButton.disabled = true;
->>>>>>> fd7ad6513da683f6f6648eef9758267226bb07aa
 
 		//* On crée un bouton pour chaque réponse possible 
-		checkTime()
+		
 		
 		currentQuestion.choices.forEach(choice => {
 
@@ -82,24 +80,28 @@ const explanationText = document.getElementById('explanation')//* les explicatio
 			answer_btn.innerText = choice; // On met le texte du choix dans le bouton
 			answer_btn.classList.add("options");  // On lui donne la classe CSS "options" (pour le style)
 			optionsAnswers.appendChild(answer_btn);  // On ajoute le bouton dans la page HTML
-
+		
 			//&Quand on clique sur une réponse...
 			answer_btn.addEventListener('click', (event) => {
+				
+				
+
 				const selectedAnswer = event.target.innerText; // On récupère le texte du bouton cliqué
 				console.log(selectedAnswer);// juste pour voir ce que l’utilisateur a cliqué
 
-				let result = checkAnswer(selectedAnswer)
+				
 
-				console.log(result)
+				console.log(checkAnswer(selectedAnswer))
 				
 				explanationText.innerText = currentQuestion.explanation
-
+				clearInterval(id);
+				
 				// On désactive tous les boutons de réponse pour empêcher de cliquer plusieurs fois
 				const allButtons = optionsAnswers.querySelectorAll('.options');
 				allButtons.forEach(btn => btn.disabled = true);
-
+				
 				// Si la réponse est correcte (== la bonne réponse définie dans les données)
-				if (result === true) {
+				if (checkAnswer(selectedAnswer) === true) {
 					event.target.style.border = 'solid green';// On met le bouton en vert
 					score++
 					console.log(score)
@@ -119,26 +121,13 @@ const explanationText = document.getElementById('explanation')//* les explicatio
 				// Une fois qu'on a répondu, on autorise à cliquer sur "Suivant"
 				nextButton.disabled = false;
 			});// Fin de la boucle forEach (création des boutons)
+			affichageTimer.innerText=''
 		});// Fin de la fonction loadQuestion
+		launchCountdown()
 	}
 
 	//Quand on clique sur le bouton "Suivant"
-		nextButton.addEventListener('click', () => {
-
-		// On passe à la question suivante en augmentant l'index
-		currentQuestionIndex++;
-		affichageTimer.innerText = ''
-		// S’il reste des questions, on les affiche
-		if (currentQuestionIndex < quiz.questions.length) {
-			loadQuestion();
-		} else { // Sinon, on affiche un message de fin de quiz
-			question.innerText = 'fin du quiz';
-			optionsAnswers.innerHTML = '';// on vide les réponses
-			nextButton.style.display = 'none';// on cache le bouton "suivant"
-			replayButton.style.display = 'block';// on montre le bouton "rejouer"
-			explanationText.innerText = ''
-		}
-	})
+		nextButton.addEventListener('click',suivantButton)
 	
 
 //Quand on clique sur le bouton "Rejouer" :
@@ -164,9 +153,9 @@ function checkAnswer(response) {
 	}
 }
 
-function checkTime() {
-	compteur = 10
-	let id = setInterval(() => {
+function launchCountdown() {
+	compteur=10
+	id = setInterval(() => {
 		
 		if (compteur === 0) {
 			
@@ -184,18 +173,18 @@ function checkTime() {
 				explanationText.innerText = currentQuestion.explanation;
 				if(checkAnswer(btn.innerText)===true){
 					btn.style.border = 'solid green';
-<<<<<<< HEAD
-=======
 					explanationText.innerText = currentQuestion.explanation;
 					//explanationText.innerText = ''
 					 
 					//explanationText.innerText = ''
->>>>>>> fd7ad6513da683f6f6648eef9758267226bb07aa
 				}
 				
 			});
 			//suivantButton()
 			 //console.log(setTimeout(()=>{suivantButton(),10000}))
+			 setTimeout(() => {
+          suivantButton();
+        }, 10000);
 		}}
 		
 		console.log(compteur)
@@ -203,23 +192,9 @@ function checkTime() {
 		compteur--;
 		
 	}, 1000)
+	console.log("id",id)
 	//let startNumber = 0
 	//setTimeout(() => { clearInterval(startNumber)}, 10000)
 	
 }
 
-function suivantButton(){
-	// On passe à la question suivante en augmentant l'index
-		currentQuestionIndex++;
-		affichageTimer.innerText = ''
-		// S’il reste des questions, on les affiche
-		if (currentQuestionIndex < quiz.questions.length) {
-			loadQuestion();
-		} else { // Sinon, on affiche un message de fin de quiz
-			question.innerText = 'fin du quiz';
-			optionsAnswers.innerHTML = '';// on vide les réponses
-			nextButton.style.display = 'none';// on cache le bouton "suivant"
-			replayButton.style.display = 'block';// on montre le bouton "rejouer"
-			explanationText.innerText = ''
-		}
-}
