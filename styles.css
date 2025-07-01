@@ -1,137 +1,204 @@
-/* Centrage global de la page */
-body {
+/* ---------- RESET + BODY ---------- */
+* {
   margin: 0;
-  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background: black;
+  color: #00ff00;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #121212;
-  font-family: Arial, sans-serif;
-  color: white;
-
-  /* Cacher le curseur par défaut */
-  cursor: none;
+  height: 100vh;
+  overflow: hidden;
   position: relative;
+  text-shadow: 0 0 6px #00ff00;
 }
 
-/* Conteneur du quiz */
+/* ---------- FOND ANIMÉ MATRIX ---------- */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: black;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('https://media.giphy.com/media/WoD6JZnwap6s8/giphy.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.2;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ---------- CONTAINER ---------- */
 #quiz-container {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 25px #00ff00;
+  width: 90%;
+  max-width: 600px;
   text-align: center;
-  border: 1px solid #00ffff;
-  box-shadow: 0 0 8px #00ffff44;
-  padding: 30px 40px;
-  border-radius: 12px;
-  background-color: #1e1e1e;
-  width: 400px;
 }
 
-/* Zone de la question */
+/* ---------- QUESTION ---------- */
 #question-text {
-  font-size: 1.3rem;
-  margin-bottom: 25px;
-  padding: 15px;
-  border: 1px solid #00ffff;
-  box-shadow: 0 0 8px #00ffff44;
-  border-radius: 10px;
-  background-color: #222;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-/* Conteneur des options */
+/* ---------- SCORE & TIMER TEXT ---------- */
+#affiche-score,
+#affiche-timer {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* ---------- BARRES ---------- */
+#progress {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin: 0 auto 10px auto;
+  width: 100%;
+  max-width: 300px;
+}
+
+#progress span {
+  flex: 1;
+  height: 8px;
+  background-color: #dcff18;
+  border-radius: 5px;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+#progress span.active {
+  opacity: 1;
+}
+
+#timer-bar-container {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 10px auto;
+  background-color: rgba(0, 255, 0, 0.1);
+  height: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+#timer-bar {
+  height: 100%;
+  width: 100%;
+  background-color: #00ff00;
+  transition: width 1s linear, background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+/* ---------- OPTIONS ---------- */
 #options-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
-/* Boutons de réponse avec effet néon statique */
 .options {
-  padding: 12px 20px;
-  border: 1px solid #00ffff;
-  box-shadow: 0 0 4px #00ffff44;
+  background-color: transparent;
+  border: 1px solid #00ff00;
   border-radius: 8px;
-  background-color: #222;
-  color: white;
+  padding: 12px;
   font-size: 1rem;
+  color: #00ff00;
   cursor: pointer;
-  transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
+  transition: all 0.2s ease;
 }
 
-/* Hover sur boutons de réponse */
-.options:hover {
-  background-color: #222;
-  color: #00ffff;
-  border-color: #00ffff;
-  box-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+.options:hover:not(:disabled) {
+  background-color: #00ff00;
+  color: black;
+  text-shadow: none;
 }
 
-/*.options:disabled {
-  border-color: red;
-}*/
-
-.options:hover:disabled {
-  box-shadow: none;
+.options:disabled,
+.options:disabled:hover {
+  background-color: transparent;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
-/* Conteneur des boutons Suivant / Rejouer */
+.options.correct {
+  border-color: #00ff00;
+}
+
+.options.incorrect {
+  border-color: #ff0033;
+}
+
+/* ---------- BOUTONS ---------- */
 .button-container {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
 }
 
-/* Style boutons Suivant et Rejouer */
-#next-button, #replay-button {
-  padding: 12px 25px;
-  font-size: 1rem;
+button {
+  background-color: transparent;
+  border: 1px solid #00ff00;
+  color: #00ff00;
   border-radius: 8px;
-  border: 1px solid #00ffff;
-  box-shadow: 0 0 4px #00ffff44;
-  background-color: #222;
-  color: white;
+  padding: 12px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-}
-
-/* Hover effet néon statique sur boutons Suivant / Rejouer */
-#next-button:hover, #replay-button:hover {
-  background-color: #222;
-  color: #00ffff;
-  border-color: #00ffff;
-  box-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
-}
-
-#progress {
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-#progress span {
-  width:50px;
-  height: 14px;
-  border-radius: 10%;
-  background: #e2e8f0; /* gris clair */
   transition: background 0.3s ease;
 }
 
-#progressScore {
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  color: aqua;
+button:hover:not(:disabled) {
+  background-color: #00ff00;
+  color: black;
+  text-shadow: none;
 }
 
-#progressScore span.score-unit {
-  color: tomato;
-  width:50px;
-  height: 14px;
-  border-radius: 10%;
-  background: blue; /* gris clair */
-  transition: background 0.3s ease;
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
+/* ---------- EXPLICATION ---------- */
+#explanation {
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px) {
+  #quiz-container {
+    padding: 20px;
+  }
+
+  #question-text {
+    font-size: 1.2rem;
+  }
+
+  .options, button {
+    font-size: 0.95rem;
+  }
+
+  #progress,
+  #timer-bar-container {
+    max-width: 100%;
+  }
+}
