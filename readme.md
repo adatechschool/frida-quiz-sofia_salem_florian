@@ -61,9 +61,9 @@ Objectifs :
 > débuter le css
 
 Tâches :
->
->
->
+> Clean code ok
+> Quiz opérationnel
+> Css en cours
 
 
 Mercredi 02 juillet
@@ -71,7 +71,8 @@ Mercredi 02 juillet
 Objectifs :
 > avoir terminé le css
 > faire des sessions de présentation (se répartir les features à présenter)
-> 
+> relire et bien comprendre le code
+
 
 Tâches :
 >
