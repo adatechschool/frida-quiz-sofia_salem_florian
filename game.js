@@ -209,17 +209,19 @@ function launchCountdown() {
 					currentQuestionIndex++	
 								// Passe à la question suivante
 					timerBar.style.backgroundColor = "#28a745";
-					clearInterval(id)										// Stoppe le timer en cours
+					clearInterval(id)														// Stoppe le timer en cours
 								
 			
 					// S’il reste des questions, on les affiche
 					if (currentQuestionIndex < quiz.questions.length) {
-						
-			loadQuestion();													// On charge la prochaine question
 
-		// Sinon
+						
+					loadQuestion();															// On charge la prochaine question
+
+					// Sinon
 					} else { 										
 					question.innerText = 'fin du quiz';										// on affiche un message de fin de quiz
+					affichageMessageFin()
 					optionsAnswers.innerHTML = '';											// on vide les boutons réponses
 					explanationText.innerText = ''											// on vide les explications
 					affichageTimer.innerText=''  											// on vide le timer 
@@ -229,11 +231,26 @@ function launchCountdown() {
 					progress.innerHTML = ''
 					const barretimer=document.getElementById("timer-bar-container")
 					barretimer.style.display='none'
+					
 					// timerBar.style.display = 'none'
 					// timerBar.innerHTML=''
 		
 			}
 			}
+function affichageMessageFin(){
+	const messageDeFin = document.createElement('h2')
+					if (score > 7) { 
+						messageDeFin.innerText = ' Bravo ! '}
+					else if (score === 5 && score < 7){ 
+						messageDeFin.innerText = 'Tu peux faire mieux'}
+					else if ( score < 5 ) { 
+						messageDeFin.innerText = ' Revois tes bases'}
+					
+				messageDeFin.classList.add("message-fin"); // Ajoute une classe CSS pour le style
+				document.getElementById("quiz-container").appendChild(messageDeFin);
+}
+
+	
 
 
 		//* Fonction pour reinitialiser le quiz pour rejouer
