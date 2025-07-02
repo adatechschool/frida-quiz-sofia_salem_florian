@@ -242,10 +242,10 @@ function affichageMessageFin(){
 	 messageDeFin = document.createElement('h2')
 					if (score > 7) { 
 						messageDeFin.innerText = ' Bravo ! '}
-					else if (score === 5 && score <= 7){ 
-						messageDeFin.innerText = 'Tu peux faire mieux'}
 					else if ( score < 5 ) { 
 						messageDeFin.innerText = ' Revois tes bases'}
+					else if (score <=7 || score ===5){ 
+						messageDeFin.innerText = 'Tu peux faire mieux'}
 					messageDeFin.classList.add("message-fin"); // Ajoute une classe CSS pour le style
 					document.getElementById("quiz-container").appendChild(messageDeFin);
 				
