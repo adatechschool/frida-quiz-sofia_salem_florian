@@ -247,7 +247,7 @@ function affichageMessageFin(){
 					else if (score <=7 || score ===5){ 
 						messageDeFin.innerText = 'Tu peux faire mieux'}
 					messageDeFin.classList.add("message-fin"); // Ajoute une classe CSS pour le style
-					document.getElementById("quiz-container").appendChild(messageDeFin);
+					question.appendChild(messageDeFin);
 				
 }
 
@@ -267,7 +267,7 @@ function affichageMessageFin(){
 					explanationText.innerText = ''	
 					const barretimer=document.getElementById("timer-bar-container")
 					barretimer.style.display='block'				// on vide les explications
-					document.getElementById("quiz-container").removeChild(messageDeFin);
+					question.removeChild(messageDeFin);
 					loadQuestion();									// on relance la première question
 			}
 
