@@ -17,7 +17,7 @@ let currentQuestionIndex = 0;   	// Index de la première question
 let score = 0;						// score utilisateur
 let compteur = 	10				// Compteur du timer (10 secondes par question)
 let id								// Stocke l'id du setInterval
-
+let messageDeFin
 
 //& Tous les éléments HTML
 
@@ -30,6 +30,7 @@ const affichageTimer = document.getElementById('affiche-timer')			// Zone timer
 const progress = document.getElementById("progress")					// Barre de progression
 const explanationText = document.getElementById('explanation')			// Zone des explications
 const timerBar = document.getElementById("timer-bar");
+
 
 //& Fonctions
 
@@ -238,25 +239,26 @@ function launchCountdown() {
 			}
 			}
 function affichageMessageFin(){
-	const messageDeFin = document.createElement('h2')
+	 messageDeFin = document.createElement('h2')
 					if (score > 7) { 
 						messageDeFin.innerText = ' Bravo ! '}
-					else if (score === 5 && score < 7){ 
+					else if (score === 5 && score <= 7){ 
 						messageDeFin.innerText = 'Tu peux faire mieux'}
 					else if ( score < 5 ) { 
 						messageDeFin.innerText = ' Revois tes bases'}
-					
-				messageDeFin.classList.add("message-fin"); // Ajoute une classe CSS pour le style
-				document.getElementById("quiz-container").appendChild(messageDeFin);
+					messageDeFin.classList.add("message-fin"); // Ajoute une classe CSS pour le style
+					document.getElementById("quiz-container").appendChild(messageDeFin);
+				
 }
 
 	
+				
 
 
 		//* Fonction pour reinitialiser le quiz pour rejouer
 
 				function resetQuiz() {
-
+					
 					currentQuestionIndex = 0;						// on remet à zéro l'index des questions
 					score = 0										// on remet à zéro le score
 					nextButton.style.display = 'block';				// on affiche le bouton "Suivant"
@@ -265,6 +267,7 @@ function affichageMessageFin(){
 					explanationText.innerText = ''	
 					const barretimer=document.getElementById("timer-bar-container")
 					barretimer.style.display='block'				// on vide les explications
+					document.getElementById("quiz-container").removeChild(messageDeFin);
 					loadQuestion();									// on relance la première question
 			}
 
