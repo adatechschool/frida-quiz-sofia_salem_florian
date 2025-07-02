@@ -219,42 +219,36 @@ function boutonSuivant() {
 
 		loadQuestion();															// On charge la prochaine question
 
-		// Sinon
-	} else {
-		question.innerText = 'fin du quiz';										// on affiche un message de fin de quiz
-		affichageMessageFin()
-		optionsAnswers.innerHTML = '';											// on vide les boutons réponses
-		explanationText.innerText = ''											// on vide les explications
-		affichageTimer.innerText = ''  											// on vide le timer 
-		nextButton.style.display = 'none';										// on cache le bouton "Suivant"
-		replayButton.style.display = 'block';									// on affiche le bouton "Rejouer"
-		affichageScore.innerText = `Score ${score}/${quiz.questions.length}`	// On met à jour l'affichage du score
-		progress.innerHTML = ''
-		const barretimer = document.getElementById("timer-bar-container")
-		barretimer.style.display = 'none'
-
-		// timerBar.style.display = 'none'
-		// timerBar.innerHTML=''
-
-	}
-}
-
-//* Fonction message de fin
-
-function affichageMessageFin() {
-	messageDeFin = document.createElement('h2')
-	if (score > 7) {
-		messageDeFin.innerText = ' Bravo ! '
-	}
-	else if (score < 5) {
-		messageDeFin.innerText = ' Revois tes bases'
-	}
-	else if (score <= 7 || score === 5) {
-		messageDeFin.innerText = 'Tu peux faire mieux'
-	}
-	messageDeFin.classList.add("message-fin"); // Ajoute une classe CSS pour le style
-	document.getElementById("quiz-container").appendChild(messageDeFin);
-
+					// Sinon
+					} else { 										
+					question.innerText = 'fin du quiz';										// on affiche un message de fin de quiz
+					affichageMessageFin()
+					optionsAnswers.innerHTML = '';											// on vide les boutons réponses
+					explanationText.innerText = ''											// on vide les explications
+					affichageTimer.innerText=''  											// on vide le timer 
+					nextButton.style.display = 'none';										// on cache le bouton "Suivant"
+					replayButton.style.display = 'block';									// on affiche le bouton "Rejouer"
+					affichageScore.innerText = `Score ${score}/${quiz.questions.length}`	// On met à jour l'affichage du score
+					progress.innerHTML = ''
+					const barretimer=document.getElementById("timer-bar-container")
+					barretimer.style.display='none'
+					
+					// timerBar.style.display = 'none'
+					// timerBar.innerHTML=''
+		
+			}
+			}
+function affichageMessageFin(){
+	 messageDeFin = document.createElement('h2')
+					if (score > 7) { 
+						messageDeFin.innerText = ' Bravo ! '}
+					else if ( score < 5 ) { 
+						messageDeFin.innerText = ' Revois tes bases'}
+					else if (score <=7 || score ===5){ 
+						messageDeFin.innerText = 'Tu peux faire mieux'}
+					messageDeFin.classList.add("message-fin"); // Ajoute une classe CSS pour le style
+					question.appendChild(messageDeFin);
+				
 }
 
 
@@ -263,19 +257,19 @@ function affichageMessageFin() {
 
 //* Fonction pour reinitialiser le quiz pour rejouer
 
-function resetQuiz() {
-
-	currentQuestionIndex = 0;						// on remet à zéro l'index des questions
-	score = 0										// on remet à zéro le score
-	nextButton.style.display = 'block';				// on affiche le bouton "Suivant"
-	replayButton.style.display = 'none';			// on cache le bouton "Rejouer"
-	affichageScore.innerText = ''					// on vide le score
-	explanationText.innerText = ''
-	const barretimer = document.getElementById("timer-bar-container")
-	barretimer.style.display = 'block'				// on vide les explications
-	document.getElementById("quiz-container").removeChild(messageDeFin);
-	loadQuestion();									// on relance la première question
-}
+				function resetQuiz() {
+					
+					currentQuestionIndex = 0;						// on remet à zéro l'index des questions
+					score = 0										// on remet à zéro le score
+					nextButton.style.display = 'block';				// on affiche le bouton "Suivant"
+					replayButton.style.display = 'none';			// on cache le bouton "Rejouer"
+					affichageScore.innerText = ''					// on vide le score
+					explanationText.innerText = ''	
+					const barretimer=document.getElementById("timer-bar-container")
+					barretimer.style.display='block'				// on vide les explications
+					question.removeChild(messageDeFin);
+					loadQuestion();									// on relance la première question
+			}
 
 // Evenements boutons
 
