@@ -75,7 +75,10 @@ const timerBar = document.getElementById("timer-bar");
 
 			if (checkAnswer(choice) === true) {											// Si la réponse sélectionnée est vraie
 				//event.target.style.border = 'solid green';							// Bordure verte pour la bonne réponse
-				answer_btn.style.border = '5px solid green'
+				answer_btn.style.opacity= 1
+				answer_btn.style.backgroundColor = ' #00ff00'
+				
+  				answer_btn.style.color='black';
 				score++																	// On incrémente le score
 				//console.log(score)													// On affiche dans la console le score
 				affichageScore.innerText = `Score ${score}/${quiz.questions.length}`	// On met à jour l'affichage du score
@@ -84,7 +87,10 @@ const timerBar = document.getElementById("timer-bar");
 			} else {
 				//event.target.style.border = 'solid red'; 								// Sinon, bordure rouge pour mauvaise réponse
 				//console.log(score)													// On affiche dans la console le score
-				answer_btn.style.border = '5px solid red'
+				answer_btn.style.opacity= 1
+				answer_btn.style.backgroundColor = '#dec504';
+				answer_btn.style.border='#dec504'
+  				answer_btn.style.color='black';
 				afficherBonneRéponse()													// Afficher bonne réponse en vert
 			}
 
@@ -116,7 +122,9 @@ loadQuestion();	 //Au démarrage, on charge la première question automatiquemen
 					// Autre méthode : const correctBtn = Array.from(allButtons).find(btn => btn.innerText === currentQuestion.correctAnswer);
 					allButtons.forEach(btn => {
 					if (btn.innerText === correct_Answer) {
-					btn.style.border = '5px solid green';							// On met en vert le bouton qui contient la bonne réponse
+					btn.style.opacity=1
+					btn.style.backgroundColor = ' #00ff00';
+					btn.style.color='black'							// On met en vert le bouton qui contient la bonne réponse
 			}
 			})
 			}
@@ -189,8 +197,8 @@ function launchCountdown() {
 					const spans = document.querySelectorAll('span');		// on selectionne tous les spans
 		
 					for (let i = 0; i <= currentQuestionIndex; i++)
-					spans[i].style.backgroundColor = "yellow"				// à chaquue question on affiche la jauge de progression en jaune
-			}
+					spans[i].style.backgroundColor = "#dec504"			// à chaquue question on affiche la jauge de progression en jaune
+				}
 		
 
 		//* Fonction qui gère le bouton suivant

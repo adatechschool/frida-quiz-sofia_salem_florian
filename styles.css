@@ -79,8 +79,10 @@ body::after {
 #progress span {
   flex: 1;
   height: 8px;
+  border-color: #0ac13e;
+  border: 1px solid #00ff00;
   border-radius: 5px;
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity 0.3s ease;
 }
 #progress span.active {
@@ -115,8 +117,8 @@ body::after {
 }
 
 .options {
-  background-color: transparent;
-  border: 1px solid #00ff00;
+  /*background-color: transparent;*/
+  border: 1px solid #00ff00f4;
   border-radius: 8px;
   padding: 12px;
   font-size: 1rem;
@@ -140,6 +142,7 @@ body::after {
 
 .options.correct {
   border-color: #00ff00;
+  /*border-color:#ffd500;*/
 }
 
 .options.incorrect {
