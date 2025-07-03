@@ -10,33 +10,44 @@
 </head>
 
 <body>
-
+    <!--    contenu du quiz  -->
     <div id="quiz-container">
-        <div class="progress barre" id="progress"></div>
-        <!-- Barre de timer (comme téléchargement) -->
 
+        <!-- Barre de progression -->
+        <div class="progress barre" id="progress"></div>
+        
         <!-- Jauge dynamique du timer (sous la barre de progression) -->
-        <div id="timer-bar-container" >
+        <div id="timer-bar-container">
             <div id="timer-bar"></div>
         </div>
+       
+        <!-- zone ou se trouve le score -->
         <div id='affiche-score'> score </div>
+       
+        <!--  zone ou se trouve le compte à rebours -->
         <div id='affiche-timer'> countdown </div>
+
         <div class="question" id="question-text">
             <!-- La question sera injectée ici par JavaScript -->
         </div>
 
-
         <div id="options-container">
-            <!-- Les options seront injectées ici par JavaScript -->
+            <!-- Les options (choix réponses) seront injectées ici par JavaScript -->
         </div>
-
-
+       
+        <!-- les boutons  -->
         <div class="button-container">
+            
+            <!--  le bouton suivant -->
             <button id="next-button">Suivant</button>
+            
+            <!--  le bouton rejouer -->
             <button id="replay-button" style="display: none;">Rejouer</button>
         </div>
-
+       
+        <!-- zone ou se trouve les explications -->
         <div id="explanation">Explications</div>
+        
     </div>
 
     <!-- Importe ici ton fichier JavaScript -->
