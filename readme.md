@@ -4,7 +4,7 @@ Ce projet sera un quiz par rapport aux notions de code.
 SEMAINE 01
 
 
-Lundi 23 juin
+LUNDI 23 JUIN
 
 > création squelette HTML
 > création fichiers game.js, questions.js, readme.md
@@ -13,26 +13,30 @@ Lundi 23 juin
 > questions dynamique
 
 
-Mardi 24 juin
+
+MARDI 24 JUIN
 
 > rendre le bouton "suivant" dynamique
 > ajout bouton "rejouer" à la fin du quiz
 
 
-Mercredi 25 juin
+
+MERCREDI 25 JUIN
 
 > couleur quand clic bouton true/false 
 > désactive les autres boutons quand clic sur un bouton (en cours de résolution)
 
 
-Jeudi 26 juin
+
+JEUDI 26 JUIN
 
 > désactive les autres boutons quand clic sur un bouton (terminé)
 > ajout suivi de score
 > timer (en cours)
 
 
-Vendredi 27 juin
+
+VENDREDI 27 JUIN
 
 > barre de progression
 > timer opérationnel et qui se bloque à 0
@@ -41,10 +45,11 @@ Vendredi 27 juin
 > ajuster timer sélection réponse (en cours)
 
 
+
 SEMAINE 02
 
 
-Lundi 30 juin
+LUNDI 30 JUIN
 
 > Timer opérationnel
 > Effacer "countdown" au début du compte à rebours
@@ -53,7 +58,8 @@ Lundi 30 juin
 > Feature suivant auto (à régler)
 
 
-Mardi 01 juillet
+
+MARDI 01 JUILLET
 
 Objectifs :
 > terminer clean code
@@ -66,7 +72,8 @@ Tâches :
 > Css en cours
 
 
-Mercredi 02 juillet
+
+MERCREDI 02 JUILLET
 
 Objectifs :
 > avoir terminé le css
@@ -75,6 +82,22 @@ Objectifs :
 
 
 Tâches :
->
->
->
+> css terminé : ajout d'animations
+> jauge dynamique en lien avec le timer
+> message d'évaluation
+
+
+
+JEUDI 03 JUILLET
+
+Objectifs :
+> 
+> 
+> 
+
+
+Tâches :
+> 
+> 
+> 
+
