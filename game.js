@@ -18,7 +18,7 @@ const affichageScore = document.getElementById('affiche-score')			// Zone score
 const affichageTimer = document.getElementById('affiche-timer')			// Zone timer
 const progress = document.getElementById("progress")					// Barre de progression
 const explanationText = document.getElementById('explanation')			// Zone des explications
-const timerBar = document.getElementById("timer-bar");
+const timerBar = document.getElementById("timer-bar");					// jauge Timer
 
 
 //& Fonctions
@@ -42,23 +42,23 @@ function loadQuestion() {
 	// Affiche les choix sous forme de boutons
 	currentQuestion.choices.forEach(choice => {
 		affichageTimer.innerText = 10;
-		const answer_btn = document.createElement('button');		// Création du bouton réponse
-		answer_btn.classList.add("options");  						// On lui donne la classe CSS "options" (pour le style)
-		optionsAnswers.appendChild(answer_btn);						// On ajoute le bouton dans le container des options
-		answer_btn.innerText = choice; 								// On met le texte du choix dans le bouton réponse
+		const answer_btn = document.createElement('button');				// Création du bouton réponse
+		answer_btn.classList.add("options");  								// On lui donne la classe CSS "options" (pour le style)
+		optionsAnswers.appendChild(answer_btn);								// On ajoute le bouton dans le container des options
+		answer_btn.innerText = choice; 										// On met le texte du choix dans le bouton réponse
 
 
 		//^ Écouteur pour gérer le clic sur chaque bouton
 
 		answer_btn.addEventListener('click', () => {
 
-			clearInterval(id);											// On stoppe le timer	
-			allButtonsDisabled()										// On désactive tous les boutons        
-			explanationText.innerText = currentQuestion.explanation 	// On affiche l'explication pour cette question
+			clearInterval(id);												// On stoppe le timer	
+			allButtonsDisabled()											// On désactive tous les boutons        
+			explanationText.innerText = currentQuestion.explanation 		// On affiche l'explication pour cette question
 
 			//^ On vérifie la réponse et on applique le style
 
-			if (checkAnswer(choice) === true) {											// Si la réponse sélectionnée est vraie
+			if (checkAnswer(choice) === true) {								// Si la réponse sélectionnée est vraie
 											
 				answer_btn.style.opacity = 1											
 				answer_btn.style.backgroundColor = ' #00ff00' 							
@@ -76,11 +76,11 @@ function loadQuestion() {
 				afficherBonneRéponse()													
 			}
 
-			nextButton.disabled = false;											// Active le bouton "Suivant", une fois qu'on a répondu
+			nextButton.disabled = false;										// Active le bouton "Suivant", une fois qu'on a répondu
 		});
 	})
-	afficherBarreDeProgression()                                            		// on met à jour la barre de progression
-	launchCountdown()																// Lance le timer pour la question en cours
+	afficherBarreDeProgression()                                            	// on met à jour la barre de progression
+	launchCountdown()															// Lance le timer pour la question en cours
 }
 loadQuestion();	 
 
@@ -129,7 +129,7 @@ function launchCountdown() {
 	clearInterval(id);
 	compteur = 10;
 
-	// Affiche la jauge déjà pleine
+	//^ Affiche la jauge déjà pleine
 	timerBar.style.transition = "none";
 	timerBar.style.width = "100%";
 	timerBar.offsetHeight; 
@@ -141,12 +141,12 @@ function launchCountdown() {
 	id = setInterval(() => {
 		compteur--;
 
-		// definition pourcentage de la jauge de progression 
+		//^ définition pourcentage de la jauge de progression 
 		const pourcentage = (compteur / 10) * 100;
 		timerBar.style.width = `${pourcentage}%`;
 		affichageTimer.innerText = compteur;
 
-		// définition de la couleur de la jauge de progression en fonction du timer 
+		//^ définition de la couleur de la jauge de progression en fonction du timer 
 		if (compteur > 6) {
 			timerBar.style.backgroundColor = " #28a745"; 
 		} else if (compteur > 3) {
@@ -191,7 +191,7 @@ function boutonSuivant() {
 	clearInterval(id)															// Stoppe le timer en cours
 
 
-	// S’il reste des questions, on les affiche
+	//^ S’il reste des questions, on les affiche
 	if (currentQuestionIndex < quiz.questions.length) {
 		loadQuestion();															// On charge la prochaine question
 	
@@ -250,7 +250,7 @@ function resetQuiz() {
 	loadQuestion();																// on relance la première question
 }
 
-// Evenements boutons
+//^ Evenements boutons
 
 nextButton.addEventListener('click', boutonSuivant)
 
